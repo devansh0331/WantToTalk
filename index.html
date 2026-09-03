@@ -1,17 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Loading...</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Want to talk?</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin: 0 0 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      margin: 0 0 20px;
+      opacity: 0.9;
+    }
+    a {
+      display: inline-block;
+      background: white;
+      color: #333;
+      padding: 12px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: transform 0.2s;
+    }
+    a:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
+  <div class="card">
+    <h1>👋 Want to talk?</h1>
+    <p>Mi attach upalabdh aahe – krupaya thoda vel thamba.</p>
+   
+  </div>
+
   <script>
-    // Replace with YOUR topic name
+    // Replace with YOUR ntfy topic name
     const topic = "qwerty2026-emergency";
+
+    // Send notification to your phone
     fetch(`https://ntfy.sh/${topic}`, {
       method: "POST",
-      body: "Someone opened your link!",
-      headers: { "Title": "Link Triggered", "Priority": "high" }
-    });
+      body: "Someone opened your 'Want to talk?' link!",
+      headers: {
+        "Title": "📞 Someone wants to talk!",
+        "Priority": "max",      // max priority to bypass silent mode (Android)
+        "Tags": "phone"         // optional emoji tag
+      }
+    }).catch(err => console.error("Notification failed", err));
   </script>
 </body>
 </html>
