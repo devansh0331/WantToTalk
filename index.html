@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loading...</title>
+</head>
+<body>
+  <script>
+    // Replace with YOUR topic name
+    const topic = "qwerty2026-emergency";
+    fetch(`https://ntfy.sh/${topic}`, {
+      method: "POST",
+      body: "Someone opened your link!",
+      headers: { "Title": "Link Triggered", "Priority": "high" }
+    });
+  </script>
+</body>
+</html>
